@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-\\.:]+$');
+    }
+
+    // System connection test and health checks
+    match /system/{docId} {
+      allow get, write: if isValidId(docId);
+      allow list: if true;
+    }
+
+    // Master Synchronization Engine across multiple PCs
+    match /csr_hub_sync/{entityId} {
+      allow get: if isValidId(entityId);
+      allow list: if true;
+      allow create, update: if isValidId(entityId) &&
+        request.resource.data.entity is string &&
+        request.resource.data.entity.size() > 0 &&
+        request.resource.data.entity.size() <= 100 &&
+        request.resource.data.updatedAt is string;
+      allow delete: if isValidId(entityId);
+    }
+
+    // Workforce Employee Records
+    match /employees/{employeeId} {
+      allow get: if isValidId(employeeId);
+      allow list: if true;
+      allow create, update: if isValidId(employeeId) &&
+        request.resource.data.id is string &&
+        request.resource.data.name is string &&
+        request.resource.data.name.size() > 0;
+      allow delete: if isValidId(employeeId);
+    }
+
+    // Training Sessions & Logs
+    match /training_logs/{logId} {
+      allow get: if isValidId(logId);
+      allow list: if true;
+      allow create, update: if isValidId(logId) &&
+        request.resource.data.title is string &&
+        request.resource.data.title.size() > 0;
+      allow delete: if isValidId(logId);
+    }
+
+    // Real-Time Chat & Internal Communication
+    match /chat_messages/{messageId} {
+      allow get: if isValidId(messageId);
+      allow list: if true;
+      allow create, update: if isValidId(messageId) &&
+        request.resource.data.chatId is string &&
+        request.resource.data.senderName is string;
+      allow delete: if isValidId(messageId);
+    }
+
+    // System Backups snapshot sync
+    match /csr_backups/{backupId} {
+      allow get: if isValidId(backupId);
+      allow list: if true;
+      allow create, update: if isValidId(backupId);
+      allow delete: if isValidId(backupId);
+    }
+  }
+}

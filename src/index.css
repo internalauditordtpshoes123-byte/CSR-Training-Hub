@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@450;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --shadow-blue-200: 0 10px 15px -3px rgba(37, 99, 235, 0.15), 0 4px 6px -4px rgba(37, 99, 235, 0.08);
+  --shadow-slate-200: 0 10px 15px -3px rgba(100, 116, 139, 0.08), 0 4px 6px -4px rgba(100, 116, 139, 0.04);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+}
+
+:root {
+  --theme-color: #205b9f;
+  --theme-color-rgb: 32, 91, 159;
+  --theme-color-hover: #174476;
+  --theme-glow: rgba(32, 91, 159, 0.35);
+  --theme-panel-opacity: 0.95;
+  --bg-image-opacity: 0.45;
+  --bg-image-blur: 2px;
+}
+
+/* Glassmorphism Panel Transparency when transparency is customized */
+[data-panel-glass="true"] .bg-\[\#09152a\],
+[data-panel-glass="true"] .bg-\[\#071122\],
+[data-panel-glass="true"] .bg-\[\#081224\],
+[data-panel-glass="true"] .bg-\[\#09172f\],
+[data-panel-glass="true"] .bg-\[\#0a1830\],
+[data-panel-glass="true"] .bg-\[\#0b1b36\],
+[data-panel-glass="true"] .bg-\[\#050c18\],
+[data-panel-glass="true"] .bg-\[\#060c18\],
+[data-panel-glass="true"] .bg-\[\#0e1d38\],
+[data-panel-glass="true"] .bg-\[\#0f2142\],
+[data-panel-glass="true"] .bg-\[\#020617\],
+[data-panel-glass="true"] .bg-white {
+  background-color: rgba(9, 21, 42, var(--theme-panel-opacity, 0.9)) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* Dynamic Theme Accent Utilities */
+.theme-bg {
+  background-color: var(--theme-color) !important;
+}
+.theme-text {
+  color: var(--theme-color) !important;
+}
+.theme-border {
+  border-color: var(--theme-color) !important;
+}
+.theme-ring:focus {
+  --tw-ring-color: var(--theme-color) !important;
+}
+.theme-glow {
+  box-shadow: 0 0 16px var(--theme-glow) !important;
+}
+
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}

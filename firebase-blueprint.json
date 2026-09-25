@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "SystemState": {
+      "title": "System State Entity",
+      "description": "Global synchronized state for DATIAN CSR HUB entities",
+      "type": "object",
+      "properties": {
+        "entity": { "type": "string" },
+        "data": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" },
+        "clientId": { "type": "string" }
+      },
+      "required": ["entity", "updatedAt"]
+    },
+    "Employee": {
+      "title": "Employee Record",
+      "description": "Factory workforce record for CSR training and compliance",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "employeeNo": { "type": "string" },
+        "name": { "type": "string" },
+        "department": { "type": "string" },
+        "position": { "type": "string" },
+        "onBoardDate": { "type": "string" },
+        "status": { "type": "string" },
+        "done": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "employeeNo", "name", "department"]
+    },
+    "TrainingLog": {
+      "title": "Training Log",
+      "description": "Logged training session or module",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "date": { "type": "string" },
+        "location": { "type": "string" },
+        "instructor": { "type": "string" },
+        "status": { "type": "string" },
+        "batchCode": { "type": "string" },
+        "traineesCount": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "type", "date"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "Internal communication message between staff",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "chatId": { "type": "string" },
+        "text": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "chatId", "text", "senderName"]
+    }
+  },
+  "firestore": {
+    "/csr_hub_sync/{entityId}": {
+      "schema": "SystemState",
+      "description": "Real-time synchronization records across multiple PCs"
+    },
+    "/employees/{employeeId}": {
+      "schema": "Employee",
+      "description": "Workforce employee records"
+    },
+    "/training_logs/{logId}": {
+      "schema": "TrainingLog",
+      "description": "Training session logs and events"
+    },
+    "/chat_messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Real-time multi-PC messages"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "CSR HUB",
+  "description": "Enterprise DATIAN CSR HUB with Employee Master Directory, Leadership Training System, Anti-Bribery Compliance, Stitching Training Plans, Announcement Manager, and Persistent Document Storage.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

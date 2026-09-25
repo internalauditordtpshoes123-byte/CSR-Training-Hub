@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "DATIAN CSR HUB - Compliance & Training System",
+  "short_name": "CSR HUB",
+  "description": "Enterprise DATIAN CSR HUB with Employee Master Directory, Leadership Training System, Anti-Bribery Compliance, Stitching Training Plans, Announcement Manager, and Persistent Document Storage.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0a192f",
+  "background_color": "#020617",
+  "icons": [
+    {
+      "src": "/datian-logo.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
